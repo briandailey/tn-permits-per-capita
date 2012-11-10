@@ -1,0 +1,10 @@
+Show TN handgun permits by county per capita, based on 2011 population estimates.
+
+Data sources:
+
+2011 Population Estimates
+http://www.census.gov/popest/data/counties/totals/2011/tables/CO-EST2011-01-47.csv
+
+Current Handgun Permits, as of Nov. 2012
+http://www.tn.gov/safety/stats/DL_Handgun/handgun.shtml
+http://www.tn.gov/safety/stats/DL_Handgun/Handgun/Current_HG_PermitHolders.pdf

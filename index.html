@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+      var data = google.visualization.arrayToDataTable([
+                    ["County", "Handgun Permits Per Capita"],
+                    ["Anderson County",0.0783166961],
+                    ["Bedford County",0.0539673471],
+                    ["Benton County",0.0721241631],
+                    ["Bledsoe County",0.0673921492],
+                    ["Blount County",0.074034915],
+                    ["Bradley County",0.0607565839],
+                    ["Campbell County",0.0686956951],
+                    ["Cannon County",0.0795727055],
+                    ["Carroll County",0.0620585445],
+                    ["Carter County",0.0602605578],
+                    ["Cheatham County",0.0745176314],
+                    ["Chester County",0.0745580771],
+                    ["Claiborne County",0.0711488251],
+                    ["Clay County",0.0472877207],
+                    ["Cocke County",0.0643709205],
+                    ["Coffee County",0.0636034405],
+                    ["Crockett County",0.0687143544],
+                    ["Cumberland County",0.0762289871],
+                    ["Davidson County",0.0372194028],
+                    ["De Kalb County",0.0874085075],
+                    ["Decatur County",0.0786343801],
+                    ["Dickson County",0.0665122502],
+                    ["Dyer County",0.0486227482],
+                    ["Fayette County",0.1019655701],
+                    ["Fentress County",0.0706992231],
+                    ["Franklin County",0.0599750715],
+                    ["Gibson County",0.0648643236],
+                    ["Giles County",0.0597202845],
+                    ["Grainger County",0.0815690064],
+                    ["Greene County",0.0674223741],
+                    ["Grundy County",0.0648947951],
+                    ["Hamblen County",0.0661254004],
+                    ["Hamilton County",0.0492144754],
+                    ["Hancock County",0.0587798723],
+                    ["Hardeman County",0.048855929],
+                    ["Hardin County",0.0777614594],
+                    ["Hawkins County",0.0758589049],
+                    ["Haywood County",0.0545208446],
+                    ["Henderson County",0.0674261966],
+                    ["Henry County",0.0648800692],
+                    ["Hickman County",0.0590018848],
+                    ["Houston County",0.0634825393],
+                    ["Humphreys County",0.0729290742],
+                    ["Jackson County",0.0646381145],
+                    ["Jefferson County",0.0685363682],
+                    ["Johnson County",0.0510120125],
+                    ["Knox County",0.0568490533],
+                    ["Lake County",0.0388224708],
+                    ["Lauderdale County",0.052796598],
+                    ["Lawrence County",0.0576991571],
+                    ["Lewis County",0.0619337836],
+                    ["Lincoln County",0.057760761],
+                    ["Loudon County",0.0794524443],
+                    ["Macon County",0.0518567934],
+                    ["Madison County",0.0647193527],
+                    ["Marion County",0.0508096234],
+                    ["Marshall County",0.0541757067],
+                    ["Maury County",0.0665202616],
+                    ["McMinn County",0.0761026891],
+                    ["McNairy County",0.0624664674],
+                    ["Meigs County",0.0774473886],
+                    ["Monroe County",0.0702063188],
+                    ["Montgomery County",0.0498474117],
+                    ["Moore County",0.0892216503],
+                    ["Morgan County",0.0687334005],
+                    ["Obion County",0.0614029569],
+                    ["Overton County",0.0566556904],
+                    ["Perry County",0.0871106609],
+                    ["Pickett County",0.0693088637],
+                    ["Polk County",0.0653793432],
+                    ["Putnam County",0.0651607774],
+                    ["Rhea County",0.0611926806],
+                    ["Roane County",0.0904751291],
+                    ["Robertson County",0.0727654755],
+                    ["Rutherford County",0.0530936595],
+                    ["Scott County",0.0611462094],
+                    ["Sequatchie County",0.0759096612],
+                    ["Sevier County",0.0660354667],
+                    ["Shelby County",0.0507342624],
+                    ["Smith County",0.0589033943],
+                    ["Stewart County",0.0704535113],
+                    ["Sullivan County",0.0643378499],
+                    ["Sumner County",0.0627115331],
+                    ["Tipton County",0.0801396571],
+                    ["Trousdale County",0.0568065507],
+                    ["Unicoi County",0.0748358862],
+                    ["Union County",0.0722916667],
+                    ["Van Buren County",0.0698522707],
+                    ["Warren County",0.0612868485],
+                    ["Washington County",0.0620009167],
+                    ["Wayne County",0.0518553478],
+                    ["Weakley County",0.0484562607],
+                    ["White County",0.0746108838],
+                    ["Williamson County",0.0552609249],
+                    ["Wilson County",0.0791051047]
+              ]);
+
+        var options = {
+                region: 'US-TN',
+                resolution: 'provinces',
+                displayMode: 'markers',
+                colorAxis: {colors: ['green', 'red']}
+            };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    };
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
