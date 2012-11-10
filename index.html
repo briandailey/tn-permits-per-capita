@@ -2,11 +2,16 @@
   <head>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
-     google.load('visualization', '1', {'packages': ['geochart']});
-     google.setOnLoadCallback(drawRegionsMap);
+     google.load('visualization', '1', {'packages': ['geochart', 'corechart']});
+     google.setOnLoadCallback(init);
+
+    function init() {
+        drawRegionsMap();
+        drawCorrelation();
+    };
 
       function drawRegionsMap() {
-      var data = google.visualization.arrayToDataTable([
+        var data = google.visualization.arrayToDataTable([
                     ["County", "Handgun Permits Per Capita"],
                     ["Anderson County",0.0783166961],
                     ["Bedford County",0.0539673471],
@@ -115,9 +120,125 @@
         var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
         chart.draw(data, options);
     };
+
+    function drawCorrelation() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Permits');
+        data.addColumn('number', 'Crime');
+        data.addColumn({type:'string', role:'tooltip'});
+        data.addRows([
+[50.7342624,48.12,"Shelby County"],
+[54.5208446,41.2,"Haywood County"],
+[37.2194028,39.85,"Davidson County"],
+[64.7193527,37.38,"Madison County"],
+[66.5202616,35.82,"Maury County"],
+[48.6227482,34.38,"Dyer County"],
+[57.6991571,33.29,"Lawrence County"],
+[80.1396571,32.81,"Tipton County"],
+[64.3378499,28.57,"Sullivan County"],
+[64.3709205,28.56,"Cocke County"],
+[67.4261966,27.8,"Henderson County"],
+[64.8643236,27.12,"Gibson County"],
+[64.8947951,26.73,"Grundy County"],
+[66.5122502,25.7,"Dickson County"],
+[49.8474117,25.2,"Montgomery County"],
+[52.796598,24.87,"Lauderdale County"],
+[60.7565839,24.76,"Bradley County"],
+[63.6034405,23.65,"Coffee County"],
+[63.4825393,23.4,"Houston County"],
+[65.1607774,23.12,"Putnam County"],
+[61.9337836,22.73,"Lewis County"],
+[56.8065507,22.65,"Trousdale County"],
+[53.9673471,22.35,"Bedford County"],
+[53.0936595,21.13,"Rutherford County"],
+[76.1026891,20.76,"McMinn County"],
+[57.760761,20.61,"Lincoln County"],
+[74.6108838,20.27,"White County"],
+[74.5176314,20.19,"Cheatham County"],
+[77.4473886,20.19,"Meigs County"],
+[75.9096612,20.14,"Sequatchie County"],
+[62.0009167,20,"Washington County"],
+[49.2144754,19.94,"Hamilton County"],
+[66.0354667,19.85,"Sevier County"],
+[61.1462094,19.72,"Scott County"],
+[68.6956951,19.35,"Campbell County"],
+[70.2063188,19.25,"Monroe County"],
+[77.7614594,19.17,"Hardin County"],
+[74.5580771,18.55,"Chester County"],
+[61.4029569,18.4,"Obion County"],
+[66.1254004,18.38,"Hamblen County"],
+[59.9750715,18.23,"Franklin County"],
+[61.2868485,18.03,"Warren County"],
+[48.855929,17.85,"Hardeman County"],
+[54.1757067,17.84,"Marshall County"],
+[56.8490533,17.21,"Knox County"],
+[78.6343801,17.11,"Decatur County"],
+[68.7143544,16.77,"Crockett County"],
+[48.4562607,16.3,"Weakley County"],
+[50.8096234,16.23,"Marion County"],
+[58.7798723,16.03,"Hancock County"],
+[62.7115331,16,"Sumner County"],
+[79.1051047,15.88,"Wilson County"],
+[62.4664674,15.87,"McNairy County"],
+[67.4223741,15.69,"Greene County"],
+[58.9033943,15.25,"Smith County"],
+[59.7202845,15.14,"Giles County"],
+[74.034915,15.12,"Blount County"],
+[51.0120125,15.08,"Johnson County"],
+[72.7654755,14.92,"Robertson County"],
+[76.2289871,14.8,"Cumberland County"],
+[51.8567934,14.77,"Macon County"],
+[87.1106609,14.56,"Perry County"],
+[61.1926806,14.31,"Rhea County"],
+[75.8589049,14.1,"Hawkins County"],
+[78.3166961,14.02,"Anderson County"],
+[72.2916667,14.01,"Union County"],
+[79.4524443,13.73,"Loudon County"],
+[60.2605578,12.98,"Carter County"],
+[64.8800692,12.92,"Henry County"],
+[101.9655701,12.52,"Fayette County"],
+[62.0585445,12.19,"Carroll County"],
+[87.4085075,11.88,"De Kalb County"],
+[74.8358862,11.65,"Unicoi County"],
+[65.3793432,11.38,"Polk County"],
+[70.4535113,11.3,"Stewart County"],
+[38.8224708,11.06,"Lake County"],
+[70.6992231,10.99,"Fentress County"],
+[68.5363682,10.94,"Jefferson County"],
+[64.6381145,10.82,"Jackson County"],
+[59.0018848,10.65,"Hickman County"],
+[90.4751291,10.51,"Roane County"],
+[89.2216503,10.45,"Moore County"],
+[68.7334005,10.26,"Morgan County"],
+[69.8522707,10.21,"Van Buren County"],
+[71.1488251,10.16,"Claiborne County"],
+[72.1241631,9.92,"Benton County"],
+[56.6556904,9.74,"Overton County"],
+[72.9290742,8.61,"Humphreys County"],
+[47.2877207,8.38,"Clay County"],
+[79.5727055,7.56,"Cannon County"],
+[55.2609249,6.35,"Williamson County"],
+[67.3921492,5.67,"Bledsoe County"],
+[51.8553478,5.31,"Wayne County"],
+[81.5690064,4.17,"Grainger County"],
+[69.3088637,1.95,"Pickett County"]
+        ]);
+
+
+        var options = {
+          title: 'Permits / Crime',
+          hAxis: {title: 'Permits', minValue: 0, maxValue: 120},
+          vAxis: {title: 'Crime', minValue: 0, maxValue: 50},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+    };
     </script>
   </head>
   <body>
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div2" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
